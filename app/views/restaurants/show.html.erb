@@ -6,9 +6,15 @@
 
 <p>Category : <%=@restaurant.category%></p>
 
-<p><%= link_to "🔁 Edit the restaurant", restaurants_edit_path(@restaurant.id) %></p>
+<p><%= link_to "🔁 Edit the restaurant", edit_restaurant_path(@restaurant.id) %></p>
 
-<p><%= link_to "⭐️ Create a review", reviews_new_path(@restaurant.id) %></p>
+<p><% @restaurant.reviews.each do |r| %>
+      <p><%= "Review : #{r.content}" %> // Rating :<%= "*" * r.rating %></p>
+    <% end %>
+
+</p>
+
+<p><%= link_to "⭐️ Create a review", new_restaurant_review_path(@restaurant.id) %></p>
 
 <div class="link">
   <%= link_to "➤ Back to the list", restaurants_path %>

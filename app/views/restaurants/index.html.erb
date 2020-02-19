@@ -1,0 +1,15 @@
+<div class="main-container">
+  <h1>Welcome to Yelp !</h1>
+
+  <h3>⬇️ Here is the list of the restaurants ⬇️</h3>
+
+  <div class="restaurants"><% @restaurants.each do |r| %>
+    <p class="restaurant">
+      <%= link_to "#{r.name}", restaurant_path(r) %>
+      <%= link_to "❌", restaurant_path(r), method: :delete, data: { confirm: "Are you sure?" } %>
+      </p>
+    <% end %>
+  </div>
+
+  <p><%= link_to "➕ CREATE A NEW RESTAURANT", restaurants_new_path %></p>
+</div>
